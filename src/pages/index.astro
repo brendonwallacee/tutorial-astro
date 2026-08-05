@@ -1,12 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting";
 import "../styles/global.css";
 
 const pageTitle = "Página Inicial";
+
+const ola = [ "E aí", "Fala", "Colé", "Dê o papo aí", "Aoba"];
+
+const message = ["minhas bença",
+  "oh mães",
+  "colegas",
+  "vcs",
+  "pessoas",
+  "amizade"
+];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>Olá minhas bença!</h2>
+  <Greeting client:load olas={ola} messages={message} />
   <h3>Onde está minha camisa laranja?</h3>
   <p>Quem sabe, sabe</p>
 </BaseLayout>
