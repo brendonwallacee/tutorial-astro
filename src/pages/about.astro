@@ -1,5 +1,35 @@
 ---
+import '../styles/global.css';
 
+const pageTitle = "Sobre Mim";
+
+const identify = {
+  firstName: "Brendon",
+  country: "Brasil",
+  occupation: "Analista de Integração",
+  metaOccupation: "Desenvolvedor Full Stack e Empresário no ramo da tecnologia",
+  hobbies: ["música", "tecnologia", "vôlei"],
+};
+
+const skills = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Astro",
+  "Python",
+  "Entre outros..",
+];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -9,14 +39,26 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>{pageTitle}</title>
+    <style define:vars={{ skillColor, fontWeight, textCase }}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+
+      .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+      }
+    </style>
   </head>
   <body>
     <a href="/">Início</a>
     <a href="/about">Sobre</a>
     <a href="/blog">Blog</a>
 
-    <h1>Sobre Mim</h1>
+    <h1>{pageTitle}</h1>
     <h2>... e meu novo site Astro!</h2>
 
     <p>
@@ -28,5 +70,37 @@
       Este site será atualizado enquanto eu completo mais desse tutorial, então
       continue verificando e veja como minha jornada está indo!
     </p>
+    <p>Aqui estão alguns fatos sobre mim:</p>
+    <ul>
+      <li>Meu nome é {identify.firstName}.</li>
+      <li>
+        Eu moro no {identify.country} e eu trabalho como {identify.occupation},
+        mas sonho em ser um {identify.metaOccupation}.
+      </li>
+      {
+        identify.hobbies.length >= 2 && (
+          <li>
+            Dois dos meus hobbies são: {identify.hobbies[0]} e{" "}
+            {identify.hobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    <p>Minhas habilidades são:</p>
+    <ul>
+      {skills.map((habilidade) => <li class="skill">{habilidade}</li>)}
+    </ul>
+
+    {happy && <p>Estou feliz em estar aprendendo Astro!</p>}
+
+    {finished && <p>Eu terminei esse tutorial!</p>}
+
+    {
+      goal === 3 ? (
+        <p>Minha meta é terminar em 3 dias.</p>
+      ) : (
+        <p>Minha meta não é em 3 dias.</p>
+      )
+    }
   </body>
 </html>
