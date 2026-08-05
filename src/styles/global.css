@@ -101,3 +101,17 @@ html.dark {
 .dark a {
   color: #ff9776;
 }
+
+.citacao {
+  padding: 15px;
+  border-left: 5px solid #888;
+  background: #f5f5f5;
+  color: #222;
+  border-radius: 4px;
+}
+
+.dark .citacao {
+  background: #333;
+  color: #eee;
+  border-left-color: #aaa;
+}
